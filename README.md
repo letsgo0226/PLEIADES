@@ -61,17 +61,17 @@ The zero conditional-entropy field is interpreted **under the fixed, injective e
 
 ## Exact arithmetic
 
-Let the four parameters be (T,v,f,w). The script verifies the Lorentz identity
+Let the four parameters be `T, v, f, w`. The script verifies the exact Lorentz identity:
 
-[
-p^2=T^2(1-v^2)
-=
-T^2rac{(1-fv)^2-(v-f)^2}{1-f^2}
-]
+```text
+p^2 = T^2 * (1 - v^2)
 
-using exact rational equality.
+p^2 = T^2 * ((1 - f*v)^2 - (v - f)^2) / (1 - f^2)
+```
 
-For the defaults
+The two expressions are compared with exact rational equality.
+
+For the defaults:
 
 ```text
 T = 10
@@ -80,29 +80,27 @@ f = 3/10
 w = 1/5
 ```
 
-the result is
+the exact result is:
 
-[
-p^2=64,qquad p=8.
-]
+```text
+p^2 = 64
+p = 8
+```
 
 If the square root is not rational, the program preserves it symbolically rather than converting it to a floating-point approximation.
 
-It defines
+It defines:
 
-[
-z=sin^2left(rac{wp}{2}ight)
-]
+```text
+z = sin^2(w*p/2)
+```
 
 and retains the probability triple and entropy symbolically:
 
-[
-P=((1-z)^2,;2z(1-z),;z^2),
-]
-
-[
-H=-sum_i P_ilog_2 P_i.
-]
+```text
+P = ((1-z)^2, 2*z*(1-z), z^2)
+H = -sum(P_i * log2(P_i))
+```
 
 ## Requirements
 
